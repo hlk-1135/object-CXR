@@ -54,7 +54,9 @@ For the test dataset, each algorithm is required to generate a `localization.csv
 where each line corresponds to the prediciton result of one image. The first column is the image name, the second column
 is space seperated 3-element tuple of predicted foreign object coordinates with its probability in the format of (probability x y), where x and y are the width and height coordinates of the predicted foreign object. It is allowed to have zero predicted 3-element tuple for certain images, if there are no foreign objects presented. But please note the `,` after the first column even if the prediction is empty.
 
-We use FROC to evaluate the algorithm performance of localizing foreign obects on each given chest X-ray.
+We use FROC to evaluate the algorithm performance of localizing foreign obects on each given chest X-ray. A foregin object is counted as detected as long as one predicted cooridinate lies within its annotation. The sensitivity is the number of detected foreign objects dividide by the number of total foreign objects. A predicted coordinate is false positive, if it lies outside any foreign object annotation. When the numbers of false positive coordinates per image are 1, 2, 4, 8, 16, 32 , FROC is the average sensitivty of these different versions of predictions. 
+
+`froc.py` provides the details of how FROC is computed.
 
 
 ## Data
