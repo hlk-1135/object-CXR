@@ -3,6 +3,7 @@
 
 - [Background](#background)
 - [Data](#data)
+- [Annotation](#annotation)
 
 ## Background
 Analyzing chest X-rays is a common clinical approach for diagnosing pulmonary and heart diseases. However, foreign objects are occasionally presented on chest X-ray images, especially in rural and remote locations where standard filming guidances are not strictly followed. Foreign objects on chest X-rays may obscure pathological finds, thus increasing false negative diagnosis. They may also confuse junior radiologists from real pathological findings, e.g. buttons are visually similar to nodules on chest X-ray, thus increasing false positive diagnosis. Therefore, automatically detecting foreign objects on chest X-ray is important and may potentially improve overall diagnosis accuracy, e.g. by suggesting re-filming in the telemedicine setting.  
@@ -14,6 +15,25 @@ Detecting foreign objects is particularly challenging for deep learning (DL) bas
 ## Data
 5000 frontal chest X-ray images with foreign objects presented and 5000 frontal chest X-ray images without foreign objects were filmed and collected from about 300 township hosiptials in China. 12 medically-trained radiologists with 1 to 3 years of experience annotated all the images. Each annotator manually annotates the potential foreign objects on a given chest X-ray presented within the lung field. Foreign objects were annotated with bounding boxes, bounding ellipses or masks depending on the shape of the objects. Support devices were excluded from annotation. A typical frontal chest X-ray with foreign objects annotated looks like this:
 ![annotation](annotation.png)
+We randomly split the 10000 images into training, validation and test dataset:
+
+`training` 4000 chest X-rays with foreign objects presented; 4000 chest X-rays without foreign objects. 
+
+`validation` 500 chest X-rays with foreign objects presented; 500 chest X-rays without foreign objects. 
+
+`test` 500 chest X-rays with foreign objects presented; 500 chest X-rays without foreign objects. 
+
+## Annotation
+
+
+
+
+
+
+## Data
+
+
+
 
 
 You can use the [editor on GitHub](https://github.com/jfhealthcare/object-CXR/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
