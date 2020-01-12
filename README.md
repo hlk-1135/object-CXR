@@ -16,11 +16,8 @@ Detecting foreign objects is particularly challenging for deep learning (DL) bas
 5000 frontal chest X-ray images with foreign objects presented and 5000 frontal chest X-ray images without foreign objects were filmed and collected from about 300 township hosiptials in China. 12 medically-trained radiologists with 1 to 3 years of experience annotated all the images. Each annotator manually annotates the potential foreign objects on a given chest X-ray presented within the lung field. Foreign objects were annotated with bounding boxes, bounding ellipses or masks depending on the shape of the objects. Support devices were excluded from annotation. A typical frontal chest X-ray with foreign objects annotated looks like this:
 ![annotation](annotation.png)
 We randomly split the 10000 images into training, validation and test dataset:
-
 **training** 4000 chest X-rays with foreign objects presented; 4000 chest X-rays without foreign objects. 
-
 **validation** 500 chest X-rays with foreign objects presented; 500 chest X-rays without foreign objects. 
-
 **test** 500 chest X-rays with foreign objects presented; 500 chest X-rays without foreign objects. 
 
 ## Annotation
