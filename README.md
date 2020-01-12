@@ -45,7 +45,7 @@ image_name,annotation
 
 Three type of shapes are used namely rectangle, ellipse and polygon. We use `0`, `1` and `2` as `ANNO_TYPE_IDX` respectively.
 
-- For rectangle and ellipse annotations, we provide the bounding box (upper left and lower right) coordinates in the format `x1 y1 x2 x2` where `x1` < `x2` and `y1` < `y2`.
+- For rectangle and ellipse annotations, we provide the bounding box (upper left and lower right) coordinates in the format `x1 y1 x2 y2` where `x1` < `x2` and `y1` < `y2`.
 
 - For polygon annotations, we provide a sequence of coordinates in the format `x1 y1 x2 y2 ... xn yn`.
 
