@@ -3,6 +3,7 @@
 - [Background](#background)
 - [Data](#data)
 - [Annotation](#annotation)
+- [Download](#download)
 - [Evaluation](#evaluation)
 - [Baseline](#baseline)
 - [Organizers](#organizers)
@@ -49,6 +50,10 @@ Three type of shapes are used namely rectangle, ellipse and polygon. We use `0`,
 
 > ### Note:
 > Our annotations use a Cartesian pixel coordinate system, with the origin (0,0) in the upper left corner. The x coordinate extends from left to right; the y coordinate extends downward.
+
+## Download
+The training and validation dataset can be accessed here at [Google Drive](https://drive.google.com/drive/folders/1SubfNALJn6aO56lUYeJsVpFLZuXurlBC)
+
 
 ## Evaluation
 We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and  Free-response Receiver Operating Characteristic (FROC).
