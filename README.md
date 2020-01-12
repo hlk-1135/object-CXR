@@ -53,9 +53,9 @@ We use two metrics to evaluate the classification and localization performance o
 ### Classification
 For the test dataset, each algorithm is required to generate a `classification.csv` file in the format below:
 ```
-00001.jpg,0.90
-00002.jpg,0.85
-00003.jpg,0.15
+#####.jpg,0.90
+#####.jpg,0.85
+#####.jpg,0.15
 ...
 ```
 where each line corresponds to the prediciton result of one image. The first column is the image name, the second column is the predicted probability, ranging from 0 to 1, indicating whether this image has foregin objects or not.
@@ -65,9 +65,9 @@ We use AUC to evaluate the algorithm performance of classifying whether each giv
 ### Localization
 For the test dataset, each algorithm is required to generate a `localization.csv` file in the format below:
 ```
-00001.jpg,0.90 1000 500;0.80 200 400
-00002.jpg,
-00003.jpg,0.75 300 600;0.50 400 200;0.15 1000 200
+#####.jpg,0.90 1000 500;0.80 200 400
+#####.jpg,
+#####.jpg,0.75 300 600;0.50 400 200;0.15 1000 200
 ...
 ```
 where each line corresponds to the prediciton result of one image. The first column is the image name, the second column
