@@ -34,7 +34,7 @@ We provide object-level annotations for each image, which indicate the rough loc
 Annotations are provided in csv files and a csv example is shown below.
 
 ```csv
-image_name,annotations
+image_name,annotation
 #####.jpg,ANNO_TYPE_IDX x1 y1 x2 y2;ANNO_TYPE_IDX x1 y1 x2 y2 ... xn yn;...
 #####.jpg,
 #####.jpg,ANNO_TYPE_IDX x1 y1 x2 y2
