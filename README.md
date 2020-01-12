@@ -1,6 +1,7 @@
 # object-CXR challenge
 ### Automatic detection of foreign objects on chest X-rays
-![JF Healthcare Logo](logo.png)
+
+<img src="logo.png" width="50%"/>
 
 - [Background](#background)
 - [Data](#data)
