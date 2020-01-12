@@ -52,7 +52,7 @@ For the test dataset, each algorithm is required to generate a `localization.csv
 ...
 ```
 where each line corresponds to the prediciton result of one image. The first column is the image name, the second column
-is `;` seperated 3-element of predicted foreign object coordinates with its probability in the format of (probability x y), where x and y are the width and height coordinates of the predicted foreign object. It is allowed to have zero predicted 3-element tuple for certain images, if there are no foreign objects presented. But please note the `,` after the first column even if the prediction is empty.
+is space seperated 3-element tuple of predicted foreign object coordinates with its probability in the format of (probability x y), where x and y are the width and height coordinates of the predicted foreign object. It is allowed to have zero predicted 3-element tuple for certain images, if there are no foreign objects presented. But please note the `,` after the first column even if the prediction is empty.
 
 We use FROC to evaluate the algorithm performance of localizing foreign obects on each given chest X-ray.
 
