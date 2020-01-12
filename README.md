@@ -1,6 +1,3 @@
-# object-CXR challenge
-### Automatic detection of foreign objects on chest X-rays
-
 <img src="logo.png" width="100%"/>
 
 - [Background](#background)
