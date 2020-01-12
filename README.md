@@ -84,5 +84,7 @@ We use FROC to evaluate the algorithm performance of localizing foreign obects o
 ## Baseline
 
 ## Organizers
+[JF Healthcare](http://www.jfhealthcare.com/) is the primary organizers of this challenge
+<img src="jf.png" width="100%"/>
 
 ## Join
