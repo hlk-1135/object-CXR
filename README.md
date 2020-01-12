@@ -95,5 +95,6 @@ We host the online submission system at [codalab](https://worksheets.codalab.org
 
 ## Organizers
 [JF Healthcare](http://www.jfhealthcare.com/) is the primary organizer of this challenge
-<img src="jf.png" width="100%"/>
+
+<img src="jf.png" width="50%" align="middle"/>
 
