@@ -17,11 +17,11 @@ Detecting foreign objects is particularly challenging for deep learning (DL) bas
 ![annotation](annotation.png)
 We randomly split the 10000 images into training, validation and test dataset:
 
-`training` 4000 chest X-rays with foreign objects presented; 4000 chest X-rays without foreign objects. 
+**training** 4000 chest X-rays with foreign objects presented; 4000 chest X-rays without foreign objects. 
 
-`validation` 500 chest X-rays with foreign objects presented; 500 chest X-rays without foreign objects. 
+**validation** 500 chest X-rays with foreign objects presented; 500 chest X-rays without foreign objects. 
 
-`test` 500 chest X-rays with foreign objects presented; 500 chest X-rays without foreign objects. 
+**test** 500 chest X-rays with foreign objects presented; 500 chest X-rays without foreign objects. 
 
 ## Annotation
 
