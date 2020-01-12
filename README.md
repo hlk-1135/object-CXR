@@ -28,6 +28,24 @@ We randomly split the 10000 images into training, validation and test dataset:
 
 ## Annotation
 
+We provide object-level annotations for each image, which indicate the rough location of each foreign object using a closed shape.
+
+Annotations are provided in csv files and a csv example is shown below.
+
+```csv
+image_name,annotations
+#####.jpg,ANNO_TYPE_IDX x1 y1 x2 y2;ANNO_TYPE_IDX x1 y1 x2 y2 ... xn yn;...
+#####.jpg,
+#####.jpg,ANNO_TYPE_IDX x1 y1 x2 y2
+...
+```
+
+Three type of shapes are used namely rectangle, ellipse and polygon. We use `0`, `1` and `2` as `ANNO_TYPE_IDX` respectively.
+
+- For rectangle and ellipse annotations, we provide the bounding box (upper left and lower right) coordinates in the format `x1 y1 x2 x2` where `x1` < `x2` and `y1` < `y2`.
+
+- For polygon annotations, we provide a sequence of coordinates in the format `x1 y1 x2 y2 ... xn yn`.
+
 ## Evaluation
 We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and  Free-response Receiver Operating Characteristic (FROC).
 
