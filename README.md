@@ -29,7 +29,7 @@ We randomly split the 10000 images into training, validation and test dataset:
 ## Annotation
 
 ## Evaluation
-We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and Free-Response ROC Curve (FROC).
+We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and  Free-response Receiver Operating Characteristic (FROC).
 
 ### Classification
 For the test dataset, each algorithm is required to generate a `classification.csv` file in the format below:
