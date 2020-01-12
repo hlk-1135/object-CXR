@@ -94,6 +94,6 @@ We use FROC to evaluate the algorithm performance of localizing foreign obects o
 We host the online submission system at [codalab](https://worksheets.codalab.org/worksheets/0xcd2fb3db8ae74d03b53ad4c5bf81ebe2)
 
 ## Organizers
-[JF Healthcare](http://www.jfhealthcare.com/) is the primary organizers of this challenge
+[JF Healthcare](http://www.jfhealthcare.com/) is the primary organizer of this challenge
 <img src="jf.png" width="100%"/>
 
