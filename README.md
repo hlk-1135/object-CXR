@@ -1,10 +1,11 @@
-# object-CXR
+# object-CXR challenge
 ### Automatic detection of foreign objects on chest X-rays
 ![JF Healthcare Logo](logo.png)
 
 - [Background](#background)
 - [Data](#data)
 - [Annotation](#annotation)
+- [Evaluation](#evaluation)
 
 ## Background
 Analyzing chest X-rays is a common clinical approach for diagnosing pulmonary and heart diseases. However, foreign objects are occasionally presented on chest X-ray images, especially in rural and remote locations where standard filming guidances are not strictly followed. Foreign objects on chest X-rays may obscure pathological finds, thus increasing false negative diagnosis. They may also confuse junior radiologists from real pathological findings, e.g. buttons are visually similar to nodules on chest X-ray, thus increasing false positive diagnosis. Therefore, automatically detecting foreign objects on chest X-ray is important and may potentially improve overall diagnosis accuracy, e.g. by suggesting re-filming in the telemedicine setting.  
@@ -27,9 +28,33 @@ We randomly split the 10000 images into training, validation and test dataset:
 
 ## Annotation
 
+## Evaluation
+We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and Free-Response ROC Curve (FROC).
 
+### Classification
+For the test dataset, each algorithm is required to generate a `classification.csv` file in the format below:
+```
+00001.jpg,0.90
+00002.jpg,0.85
+00003.jpg,0.15
+...
+```
+where each line corresponds to the prediciton result of one image. The first column is the image name, the second column is the predicted probability, ranging from 0 to 1, indicating whether this image has foregin objects or not.
 
+We use AUC to evaluate the algorithm performance of classifying whether each given chest X-ray has foreign objects presented or not.
 
+### Localization
+For the test dataset, each algorithm is required to generate a `localization.csv` file in the format below:
+```
+00001.jpg,0.90 1000 500;0.80 200 400
+00002.jpg,
+00003.jpg,0.75 300 600;0.50 400 200;0.15 1000 200
+...
+```
+where each line corresponds to the prediciton result of one image. The first column is the image name, the second column
+is `;` seperated 3-element of predicted foreign object coordinates with its probability in the format of (probability x y), where x and y are the width and height coordinates of the predicted foreign object. It is allowed to have zero predicted 3-element tuple for certain images, if there are no foreign objects presented. But please note the `,` after the first column even if the prediction is empty.
+
+We use FROC to evaluate the algorithm performance of localizing foreign obects on each given chest X-ray.
 
 
 ## Data
