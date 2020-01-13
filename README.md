@@ -86,7 +86,7 @@ is space seperated 3-element tuple of predicted foreign object coordinates with 
 
 We use FROC to evaluate the algorithm performance of localizing foreign obects on each given chest X-ray. A foregin object is counted as detected as long as one predicted cooridinate lies within its annotation. The sensitivity is the number of detected foreign objects dividide by the number of total foreign objects. A predicted coordinate is false positive, if it lies outside any foreign object annotation. When the numbers of false positive coordinates per image are 0.125, 0.25, 0.5, 1, 2, 4, 8, FROC is the average sensitivty of these different versions of predictions. 
 
-`froc.py` provides the details of how FROC is computed.
+[froc.py](froc.py) provides the details of how FROC is computed.
 
 
 ## Baseline
