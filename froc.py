@@ -47,7 +47,7 @@ def main():
     object_dict = {}
     with open(args.gt_csv) as f:
         # header
-        f.next()
+        next(f)
         for line in f:
             image_name, annotation = line.strip('\n').split(',')
 
@@ -59,7 +59,7 @@ def main():
             for object_anno in object_annos:
                 fields = object_anno.split(' ')
                 object_type = fields[0]
-                coords = np.list(map(float, fields[1:]))
+                coords = np.array(list(map(float, fields[1:])))
                 obj = Object(image_name, num_object, object_type, coords)
                 if image_name in object_dict:
                     object_dict[image_name].append(obj)
@@ -72,7 +72,7 @@ def main():
     preds = []
     with open(args.pred_csv) as f:
         # header
-        f.next()
+        next(f)
         for line in f:
             image_name, prediction = line.strip('\n').split(',')
 
@@ -81,7 +81,7 @@ def main():
 
             coord_predictions = prediction.split(';')
             for coord_prediction in coord_predictions:
-                fields = object_anno.split(' ')
+                fields = coord_prediction.split(' ')
                 probability, x, y = list(map(float, fields))
                 pred = Prediction(image_name, probability, np.array([x, y]))
                 preds.append(pred)
