@@ -15,9 +15,9 @@ parser.add_argument('gt_csv', default=None, metavar='GT_CSV',
                     type=str, help="Path to the ground truch csv file")
 parser.add_argument('pred_csv', default=None, metavar='PRED_PATH',
                     type=str, help="Path to the predicted csv file")
-parser.add_argument('--fps', default='1,2,4,8,16,32', type=str,
+parser.add_argument('--fps', default='0.125,0.25,0.5,1,2,4,8', type=str,
                     help='False positives per image to compute FROC, comma '
-                    'seperated, default "1,2,4,8,16,32"')
+                    'seperated, default "0.125,0.25,0.5,1,2,4,8"')
 
 
 def inside_object(pred, obj):
@@ -94,6 +94,7 @@ def main():
     # compute hits and false positives
     hits = 0
     false_positives = 0
+    fps_idx = 0
     object_hitted = set()
     fps = list(map(float, args.fps.split(',')))
     froc = []
@@ -111,13 +112,16 @@ def main():
         if not is_inside:
             false_positives += 1
 
-        if false_positives / num_image >= fps[0]:
+        if false_positives / num_image >= fps[fps_idx]:
             sensitivity = hits / num_object
             froc.append(sensitivity)
-            fps.pop(0)
+            fps_idx += 1
 
-            if len(fps) == 0:
+            if len(fps) == len(froc):
                 break
+
+    while len(froc) < len(fps):
+        froc.append(froc[-1])
 
     # print froc
     print('False positives per image:')
