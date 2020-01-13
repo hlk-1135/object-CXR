@@ -5,9 +5,9 @@ from skimage.measure import points_in_poly
 
 
 Object = namedtuple('Object',
-                    ['image_name', 'object_id', 'object_type', 'coordinates'])
+                    ['image_path', 'object_id', 'object_type', 'coordinates'])
 Prediction = namedtuple('Prediction',
-                        ['image_name', 'probability', 'coordinates'])
+                        ['image_path', 'probability', 'coordinates'])
 
 
 parser = argparse.ArgumentParser(description='Compute FROC')
@@ -51,7 +51,7 @@ def main():
         # header
         next(f)
         for line in f:
-            image_name, annotation = line.strip('\n').split(',')
+            image_path, annotation = line.strip('\n').split(',')
 
             if annotation == '':
                 num_image += 1
@@ -62,11 +62,11 @@ def main():
                 fields = object_anno.split(' ')
                 object_type = fields[0]
                 coords = np.array(list(map(float, fields[1:])))
-                obj = Object(image_name, num_object, object_type, coords)
-                if image_name in object_dict:
-                    object_dict[image_name].append(obj)
+                obj = Object(image_path, num_object, object_type, coords)
+                if image_path in object_dict:
+                    object_dict[image_path].append(obj)
                 else:
-                    object_dict[image_name] = [obj]
+                    object_dict[image_path] = [obj]
                 num_object += 1
             num_image += 1
 
@@ -76,7 +76,7 @@ def main():
         # header
         next(f)
         for line in f:
-            image_name, prediction = line.strip('\n').split(',')
+            image_path, prediction = line.strip('\n').split(',')
 
             if prediction == '':
                 continue
@@ -85,7 +85,7 @@ def main():
             for coord_prediction in coord_predictions:
                 fields = coord_prediction.split(' ')
                 probability, x, y = list(map(float, fields))
-                pred = Prediction(image_name, probability, np.array([x, y]))
+                pred = Prediction(image_path, probability, np.array([x, y]))
                 preds.append(pred)
 
     # sort prediction by probabiliyt
@@ -101,8 +101,8 @@ def main():
     for i in range(len(preds)):
         is_inside = False
         pred = preds[i]
-        if pred.image_name in object_dict:
-            for obj in object_dict[pred.image_name]:
+        if pred.image_path in object_dict:
+            for obj in object_dict[pred.image_path]:
                 if inside_object(pred, obj):
                     is_inside = True
                     if obj.object_id not in object_hitted:
