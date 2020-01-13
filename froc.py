@@ -28,6 +28,8 @@ def inside_object(pred, obj):
         return x1 <= x <= x2 and y1 <= y <= y2
     # bounding ellipse
     if obj.object_type == '1':
+        x1, y1, x2, y2 = obj.coordinates
+        x, y = pred.coordinates
         x_center, y_center = (x1 + x2) / 2, (y1 + y2) / 2
         x_axis, y_axis = (x2 - x1) / 2, (y2 - y1) / 2
         return ((x - x_center)/x_axis)**2 + ((y - y_center)/y_axis)**2 <= 1
@@ -93,30 +95,29 @@ def main():
     hits = 0
     false_positives = 0
     object_hitted = set()
-    fps = list(map(int, args.fps.split(',')))
+    fps = list(map(float, args.fps.split(',')))
     froc = []
-    finished = False
     for i in range(len(preds)):
-        for obj in object_dict[image_name]:
-            if inside_object(pred, obj):
-                if obj.object_id in object_hitted:
-                    pass
-                else:
-                    hits += 1
-            else:
-                false_positives += 1
+        is_inside = False
+        pred = preds[i]
+        if pred.image_name in object_dict:
+            for obj in object_dict[pred.image_name]:
+                if inside_object(pred, obj):
+                    is_inside = True
+                    if obj.object_id not in object_hitted:
+                        hits += 1
+                        object_hitted.add(obj.object_id)
 
-            if false_positives / num_image >= fps[0]:
-                sensitivity = hits / num_object
-                froc.append(sensitivity)
-                fps.pop(0)
+        if not is_inside:
+            false_positives += 1
 
-                if len(fps) == 0:
-                    finished = True
-                    break
+        if false_positives / num_image >= fps[0]:
+            sensitivity = hits / num_object
+            froc.append(sensitivity)
+            fps.pop(0)
 
-        if finished:
-            break
+            if len(fps) == 0:
+                break
 
     # print froc
     print('False positives per image:')
