@@ -37,10 +37,10 @@ We provide object-level annotations for each image, which indicate the rough loc
 Annotations are provided in csv files and a csv example is shown below.
 
 ```csv
-image_name,annotation
-#####.jpg,ANNO_TYPE_IDX x1 y1 x2 y2;ANNO_TYPE_IDX x1 y1 x2 y2 ... xn yn;...
-#####.jpg,
-#####.jpg,ANNO_TYPE_IDX x1 y1 x2 y2
+image_path,annotation
+/path/#####.jpg,ANNO_TYPE_IDX x1 y1 x2 y2;ANNO_TYPE_IDX x1 y1 x2 y2 ... xn yn;...
+/path/#####.jpg,
+/path/#####.jpg,ANNO_TYPE_IDX x1 y1 x2 y2
 ...
 ```
 
@@ -61,28 +61,28 @@ The training and validation dataset can be accessed here at [Google Drive](https
 We use two metrics to evaluate the classification and localization performance of foreign objects detection on chest X-rays: Area Under Curve (AUC) and  Free-response Receiver Operating Characteristic (FROC).
 
 ### Classification
-For the test dataset, each algorithm is required to generate a `classification.csv` file in the format below:
+For the test dataset, each algorithm is required to generate a `prediction_classification.csv` file in the format below:
 ```
-image_name,prediction
-#####.jpg,0.90
-#####.jpg,0.85
-#####.jpg,0.15
+image_path,prediction
+/path/#####.jpg,0.90
+/path/#####.jpg,0.85
+/path/#####.jpg,0.15
 ...
 ```
-where each line corresponds to the prediciton result of one image. The first column is the image name, the second column is the predicted probability, ranging from 0 to 1, indicating whether this image has foregin objects or not.
+where each line corresponds to the prediciton result of one image. The first column is the image path, the second column is the predicted probability, ranging from 0 to 1, indicating whether this image has foregin objects or not.
 
 We use AUC to evaluate the algorithm performance of classifying whether each given chest X-ray has foreign objects presented or not.
 
 ### Localization
-For the test dataset, each algorithm is required to generate a `localization.csv` file in the format below:
+For the test dataset, each algorithm is required to generate a `prediction_localization.csv` file in the format below:
 ```
-image_name,prediction
-#####.jpg,0.90 1000 500;0.80 200 400
-#####.jpg,
-#####.jpg,0.75 300 600;0.50 400 200;0.15 1000 200
+image_path,prediction
+/path/#####.jpg,0.90 1000 500;0.80 200 400
+/path/#####.jpg,
+/path/#####.jpg,0.75 300 600;0.50 400 200;0.15 1000 200
 ...
 ```
-where each line corresponds to the prediciton result of one image. The first column is the image name, the second column
+where each line corresponds to the prediciton result of one image. The first column is the image path, the second column
 is space seperated 3-element tuple of predicted foreign object coordinates with its probability in the format of (probability x y), where x and y are the width and height coordinates of the predicted foreign object. It is allowed to have zero predicted 3-element tuple for certain images, if there are no foreign objects presented. But please note the `,` after the first column even if the prediction is empty.
 
 We use FROC to evaluate the algorithm performance of localizing foreign obects on each given chest X-ray. A foregin object is counted as detected as long as one predicted cooridinate lies within its annotation. The sensitivity is the number of detected foreign objects dividide by the number of total foreign objects. A predicted coordinate is false positive, if it lies outside any foreign object annotation. When the numbers of false positive coordinates per image are 0.125, 0.25, 0.5, 1, 2, 4, 8, FROC is the average sensitivty of these different versions of predictions. 
