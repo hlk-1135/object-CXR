@@ -92,7 +92,7 @@ We use FROC to evaluate the algorithm performance of localizing foreign obects o
 
 ## Baseline
 
-We provide a baseline result in this [Jupyter Notebook](./baseline).
+We provide a baseline result in this [Jupyter Notebook](https://github.com/jfhealthcare/object-CXR/tree/master/baseline).
 
 ## Submission
 We host the online submission system at [codalab](https://worksheets.codalab.org/worksheets/0xcd2fb3db8ae74d03b53ad4c5bf81ebe2)
