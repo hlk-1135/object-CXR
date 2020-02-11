@@ -56,7 +56,8 @@ Three type of shapes are used namely rectangle, ellipse and polygon. We use `0`,
 > Our annotations use a Cartesian pixel coordinate system, with the origin (0,0) in the upper left corner. The x coordinate extends from left to right; the y coordinate extends downward.
 
 ## Download
-The training and validation dataset can be accessed here at [Google Drive](https://drive.google.com/drive/folders/1SubfNALJn6aO56lUYeJsVpFLZuXurlBC)
+The training and validation dataset can be accessed here at [Google Drive](https://drive.google.com/drive/folders/1SubfNALJn6aO56lUYeJsVpFLZuXurlBC). The imaging data has been
+anonymousized and free to download for scientific research and non-commercial usage.
 
 
 ## Evaluation
